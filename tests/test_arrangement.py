@@ -2,14 +2,12 @@ import unittest
 
 from . import context
 
-from itertools import product
-
 from design.core import Design
 from design.parser import parse_config
 from design.factors import Factor, FactorType, OrderType
 
-class TestParticipantCalculation(unittest.TestCase):
 
+class TestParticipantCalculation(unittest.TestCase):
     def test_between_subject_design(self):
 
         config = {
@@ -32,14 +30,14 @@ class TestParticipantCalculation(unittest.TestCase):
 
         design = Design(config)
 
-        self.assertEqual(design.get_arrangement(), [
-            ['iphone', 'safari'],
-            ['iphone', 'chrome'],
-            ['iphone', 'IE'],
-            ['huawei', 'safari'],
-            ['huawei', 'chrome'],
-            ['huawei', 'IE'],
-            ['samsung', 'safari'],
-            ['samsung', 'chrome'],
-            ['samsung', 'IE'],
+        self.assertEqual(design._get_arrangement(), [
+            ['phone::iphone', 'browser::safari'],
+            ['phone::iphone', 'browser::chrome'],
+            ['phone::iphone', 'browser::IE'],
+            ['phone::huawei', 'browser::safari'],
+            ['phone::huawei', 'browser::chrome'],
+            ['phone::huawei', 'browser::IE'],
+            ['phone::samsung', 'browser::safari'],
+            ['phone::samsung', 'browser::chrome'],
+            ['phone::samsung', 'browser::IE'],
         ])
