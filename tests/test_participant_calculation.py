@@ -7,8 +7,8 @@ from design.core import Design
 from design.parser import parse_config
 from design.factors import Factor, FactorType, OrderType
 
-class TestParticipantCalculation(unittest.TestCase):
 
+class TestParticipantCalculation(unittest.TestCase):
     def test_between_subject_design(self):
 
         config = {
@@ -31,7 +31,7 @@ class TestParticipantCalculation(unittest.TestCase):
 
         design = Design(config)
 
-        self.assertEqual(design.get_min_num_participants(), 9)
+        self.assertEqual(design._get_min_num_participants(), 9)
 
     def test_within_subject_design(self):
 
@@ -58,12 +58,17 @@ class TestParticipantCalculation(unittest.TestCase):
         order_list = [order.name for order in OrderType]
         answers = [1, 3, 6, 6]
 
-        for i, (order_pair, answer_pair) in enumerate(zip(product(order_list, repeat=2), product(answers, repeat=2))):
+        for i, (order_pair, answer_pair) in enumerate(
+                zip(product(order_list, repeat=2), product(answers,
+                                                           repeat=2))):
             with self.subTest(i=i):
-                config['independentVariables']['phone']['order'] = order_pair[0]
-                config['independentVariables']['browser']['order'] = order_pair[1]
+                config['independentVariables']['phone']['order'] = order_pair[
+                    0]
+                config['independentVariables']['browser'][
+                    'order'] = order_pair[1]
                 design = Design(config)
-                self.assertEqual(design.get_min_num_participants(), answer_pair[0] * answer_pair[1])
+                self.assertEqual(design._get_min_num_participants(),
+                                 answer_pair[0] * answer_pair[1])
 
     def test_mixed_design(self):
 
@@ -93,4 +98,4 @@ class TestParticipantCalculation(unittest.TestCase):
             with self.subTest(i=i):
                 config['independentVariables']['browser']['order'] = order
                 design = Design(config)
-                self.assertEqual(design.get_min_num_participants(), answer)
+                self.assertEqual(design._get_min_num_participants(), answer)
