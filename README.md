@@ -20,10 +20,10 @@ python app.py <input_config> --out <output_filename>
 ### Input Configuration (JSON)
 
 The input configuration file has the following format:
-```json
+```
 {
   "independentVariables": {
-    <VariableName>: {
+    "<VariableName>": {
       "levels": [<level1>, <level2>, ..., <levelN>],
       "design": <design_type>,
       "order": <order_type>

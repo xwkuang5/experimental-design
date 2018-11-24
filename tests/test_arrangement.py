@@ -3,7 +3,6 @@ import unittest
 from . import context
 
 from design.core import Design
-from design.parser import parse_config
 from design.factors import Factor, FactorType, OrderType
 
 
