@@ -39,12 +39,13 @@ class Design:
         ]
         """
 
-        between_factor_conditions = [factor.get_conditions() for factor in self.between_subject_factors]
-        participant_conditions = self._get_participant_conditions()
+        conditions_list = []
+        if len(self.between_subject_factors) != 0:
+            conditions_list += [factor.get_conditions() for factor in self.between_subject_factors]
+        if len(self.within_subject_factors) != 0:
+            conditions_list += self._get_participant_conditions()
         
-        return [
-            list(combination) for combination in product(*between_factor_conditions, participant_conditions)
-        ]
+        return [list(combination) for combination in product(*conditions_list)]
 
     def _get_participant_conditions(self):
         """Get all possible combination of within-subjects conditions

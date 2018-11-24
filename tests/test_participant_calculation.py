@@ -1,8 +1,7 @@
 import unittest
+from itertools import product
 
 from . import context
-
-from itertools import product
 
 from design.core import Design
 from design.parser import parse_config
