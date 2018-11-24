@@ -1,4 +1,3 @@
-import math
 from functools import reduce
 from itertools import product
 
@@ -30,9 +29,12 @@ class Design:
         """
 
         return {
-            'minimumNumberOfParticipants': self._get_min_num_participants(),
-            'numberOfConditionsPerParticipant': self._get_num_conditions_per_participant(),
-            'arrangements': self._get_arrangement()
+            'minimumNumberOfParticipants':
+            self._get_min_num_participants(),
+            'numberOfConditionsPerParticipant':
+            self._get_num_conditions_per_participant(),
+            'arrangements':
+            self._get_arrangement()
         }
 
     def _get_arrangement(self):

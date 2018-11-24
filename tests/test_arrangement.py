@@ -41,3 +41,65 @@ class TestParticipantCalculation(unittest.TestCase):
             ['phone::samsung', 'browser::chrome'],
             ['phone::samsung', 'browser::IE'],
         ])
+
+    def test_within_subject_design(self):
+
+        config = {
+            'independentVariables': {
+                'phone': {
+                    'levels': ['iphone', 'huawei', 'samsung'],
+                    'design': FactorType.between_subject.name
+                },
+                'browser': {
+                    'levels': ['safari', 'chrome', 'IE'],
+                    'design': FactorType.within_subject.name,
+                    'order': OrderType.latin_square.name,
+                }
+            },
+            'availableTasks': {
+                'findPresidentOfUS': {
+                    'repeatable': True
+                }
+            }
+        }
+
+        design = Design(config)
+
+        self.assertEqual(design._get_arrangement(), [
+            [
+                'phone::iphone', [['browser::safari'], ['browser::chrome'],
+                                  ['browser::IE']]
+            ],
+            [
+                'phone::iphone', [['browser::chrome'], ['browser::IE'],
+                                  ['browser::safari']]
+            ],
+            [
+                'phone::iphone', [['browser::IE'], ['browser::safari'],
+                                  ['browser::chrome']]
+            ],
+            [
+                'phone::huawei', [['browser::safari'], ['browser::chrome'],
+                                  ['browser::IE']]
+            ],
+            [
+                'phone::huawei', [['browser::chrome'], ['browser::IE'],
+                                  ['browser::safari']]
+            ],
+            [
+                'phone::huawei', [['browser::IE'], ['browser::safari'],
+                                  ['browser::chrome']]
+            ],
+            [
+                'phone::samsung', [['browser::safari'], ['browser::chrome'],
+                                   ['browser::IE']]
+            ],
+            [
+                'phone::samsung', [['browser::chrome'], ['browser::IE'],
+                                   ['browser::safari']]
+            ],
+            [
+                'phone::samsung', [['browser::IE'], ['browser::safari'],
+                                   ['browser::chrome']]
+            ],
+        ])
