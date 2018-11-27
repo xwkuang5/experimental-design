@@ -22,11 +22,6 @@ class TestParticipantCalculation(unittest.TestCase):
                     'design': FactorType.between_subject.name
                 }
             },
-            'availableTasks': {
-                'findPresidentOfUS': {
-                    'repeatable': True
-                }
-            }
         }
 
         design = Design(config)
@@ -48,11 +43,6 @@ class TestParticipantCalculation(unittest.TestCase):
                     'order': None
                 }
             },
-            'availableTasks': {
-                'findPresidentOfUS': {
-                    'repeatable': True
-                }
-            }
         }
 
         order_list = [order.name for order in OrderType]
@@ -84,11 +74,6 @@ class TestParticipantCalculation(unittest.TestCase):
                     'order': None
                 }
             },
-            'availableTasks': {
-                'findPresidentOfUS': {
-                    'repeatable': True
-                }
-            }
         }
 
         order_list = [order.name for order in OrderType]

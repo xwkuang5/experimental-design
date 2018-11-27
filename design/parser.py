@@ -5,27 +5,10 @@ from factors import Factor, FactorType
 
 def parse_config(config, warning=False):
 
-    available_tasks = config.get('availableTasks', None)
-    assert available_tasks, "Available tasks field can not be None or empty"
-
     independent_variables = config.get('independentVariables', None)
     assert independent_variables, "Independent variables field can not be None"
 
     parsed_config = {}
-    # parse available tasks
-    for task_name in available_tasks:
-        if available_tasks[task_name]['repeatable']:
-            parsed_config['tasks'] = task_name
-            if warning:
-                print(
-                    "[INFO] Found one repeatable task: {}, skipping all other tasks.".
-                    format(task_name))
-            break
-        else:
-            if 'tasks' not in parsed_config:
-                parsed_config['tasks'] = [task_name]
-            else:
-                parsed_config['tasks'].append(task_name)
 
     # parse independent variables
     for variable_name in independent_variables:

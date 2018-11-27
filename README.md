@@ -30,11 +30,6 @@ The input configuration file has the following format:
     },
     ...
   },
-  "availableTasks": {
-    <TaskName>: {
-      "repeatable": <boolean>
-    }
-  }
 }
 ```
 
@@ -54,9 +49,6 @@ The order of a variable determines how it will be counterbalanced in the experim
 3. `balanced_latin_square`: the variable will be countebalanced using a balanced latin square
 4. `fully_counter_balanced`: the variable will be counterbalanced using all possible permutations of the levels.
 
-#### Available tasks
-Each task is associated with an attribute `repeatable`, if a task is repeatable, then it will be used repeatedly for all conditions. On the other hand, if a task is not repeatable, then it will only be used once in all the conditions for one participant.
-
 ### Example
 Suppose we have the following input configuration file `input_config.json`
 ```json
@@ -70,11 +62,6 @@ Suppose we have the following input configuration file `input_config.json`
             "levels": ["safari", "chrome", "IE"],
             "design": "within_subject",
             "order": "latin_square"
-        }
-    },
-    "availableTasks": {
-        "findPresidentOfUS": {
-            "repeatable": true
         }
     }
 }
@@ -106,5 +93,4 @@ produces the output configuration `output_config.json` with the following conten
 For more examples, look at the test cases in `root/tests`
 
 ## Todo
-* Add implementation for non-repeatable tasks (should tasks also be counter-balanced then?)
 * Add visualization of arrangements (tree, etc)

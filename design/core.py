@@ -19,7 +19,6 @@ class Design:
             FactorType.between_subject.name, [])
         self.within_subject_factors = parsed_config.get(
             FactorType.within_subject.name, [])
-        self.tasks = parsed_config['tasks']
 
     def get_experimental_design(self):
         """Return the parsed experimental design as a JSON object
@@ -158,11 +157,6 @@ if __name__ == '__main__':
                 'order': OrderType.latin_square.name,
             }
         },
-        'availableTasks': {
-            'findPresidentOfUS': {
-                'repeatable': True
-            }
-        }
     }
 
     design = Design(config)
