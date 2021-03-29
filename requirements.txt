@@ -13,7 +13,7 @@ MarkupSafe==1.1.0
 mccabe==0.6.1
 numpy==1.15.4
 packaging==18.0
-Pygments==2.2.0
+Pygments==2.7.4
 pylint==2.1.1
 pyparsing==2.3.0
 pytz==2018.7
